@@ -1,17 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
 nav {
+    background-color: #333;
     position: fixed;
     top: 0;
     right: 0;
-    background-color: #333;
-    padding: 10px;
-    font-size: 18px;
+    left: 0;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style: none;
     display: flex;
+    justify-content: flex-end;
+    padding: 10px;
 }
 
 nav li {
@@ -21,8 +31,39 @@ nav li {
 nav a {
     color: #fff;
     text-decoration: none;
+    padding: 5px;
 }
 
-.section {
-    margin-top
+nav a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+div {
+    padding: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+#home {
+    background-color: #fff;
+}
+
+#academic {
+    background-color: #f2f2f2;
+}
+
+#professional {
+    background-color: #fff;
+}
+
+#research {
+    background-color: #f2f2f2;
+}
+
+#volunteer {
+    background-color: #fff;
 }

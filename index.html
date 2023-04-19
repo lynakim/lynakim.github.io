@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Personal Website</title>
+    <title>My Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('academic') }}">Academic</a></li>
-            <li><a href="{{ url_for('professional') }}">Professional</a></li>
-            <li><a href="{{ url_for('research') }}">Research</a></li>
-            <li><a href="{{ url_for('volunteer') }}">Volunteer</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#academic">Academic</a></li>
+            <li><a href="#professional">Professional</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#volunteer">Volunteer</a></li>
         </ul>
     </nav>
-    <div class="content">
-        {% block content %}{% endblock %}
+    <div id="home">
+        <h1>Home</h1>
+        <p>Welcome to my website!</p>
+    </div>
+    <div id="academic">
+        <h2>Academic</h2>
+        <p>Here's some information about my academic background.</p>
+    </div>
+    <div id="professional">
+        <h2>Professional</h2>
+        <p>Here's some information about my professional experience.</p>
+    </div>
+    <div id="research">
+        <h2>Research</h2>
+        <p>Here's some information about my research interests.</p>
+    </div>
+    <div id="volunteer">
+        <h2>Volunteer</h2>
+        <p>Here's some information about my volunteer work.</p>
     </div>
 </body>
 </html>
