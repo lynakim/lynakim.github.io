@@ -1,1 +1,0 @@
-# lynakim.github.io
