@@ -1,23 +1,868 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Coming Soon</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyna Kim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #2d2d2d;
+            --secondary-color: #666666;
+            --accent-color: #6b4c9a; /* Darker purple accent color (was likely #8a63c9 or similar) */
+            --background-color: #f9f7fc;
+            --spacing-unit: 16px;
+            --sidebar-width: 220px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --text-color: #333333;
+            --light-accent-color: #f5efff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--primary-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 1.5);
+            display: flex;
+            flex-direction: column;
+            background-color: var(--background-color);
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .profile-pic {
+            width: 70%;  /* Percentage of parent container width */
+            height: auto; /* Maintain aspect ratio */
+            aspect-ratio: 1/1; /* Ensure it stays square */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: var(--spacing-unit);
+            transition: transform 0.3s ease; /* Changed to transform for a subtle hover effect */
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.03);
+        }
+
+        .name {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing-unit) * 0.25);
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+
+        /* Navigation styles */
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            display: block;
+            padding: calc(var(--spacing-unit) * 0.25) 0;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link.active {
+            color: var(--accent-color);
+            background-color: #f5efff;
+            padding-left: calc(var(--spacing-unit) * 0.5);
+            border-radius: 4px;
+        }
+
+        .has-subnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .has-subnav::after {
+            content: '+';
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .has-subnav.expanded::after {
+            content: '-';
+        }
+
+        .subnav {
+            list-style: none;
+            padding-left: calc(var(--spacing-unit) * 1);
+            margin-top: calc(var(--spacing-unit) * 0.25);
+            display: none;
+        }
+
+        .has-subnav.expanded + .subnav {
+            display: block;
+        }
+
+        .subnav-item {
+            margin-bottom: calc(var(--spacing-unit) * 0.25);
+            position: relative;
+        }
+
+        .subnav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            transition: all 0.2s ease;
+            display: block;
+            padding: calc(var(--spacing-unit) * 0.15) 0;
+            padding-left: calc(var(--spacing-unit) * 0.5);
+        }
+
+        .subnav-link:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        .subnav-link.active {
+            color: var(--accent-color);
+            opacity: 1;
+            position: relative;
+            text-decoration: underline; /* Explicitly remove any underline */
+        }
+
+        /* Add dot before active link */
+        .subnav-link.active::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Social links styles */
+        .social-links {
+            margin-top: auto;
+            padding-top: var(--spacing-unit);
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-right: var(--spacing-unit);
+            position: relative;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* Updated hover effect - underline appears all at once */
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            opacity: 0; /* Hide by default */
+            transition: opacity 0.2s ease; /* Transition opacity instead of transform */
+        }
+
+        .social-links a:hover::after {
+            opacity: 1; /* Show on hover */
+        }
+
+        /* Main content styles */
+        .main-content {
+            flex: 1;
+            margin-left: calc(var(--sidebar-width) + 20px);
+            padding: calc(var(--spacing-unit) * 3.5);
+            max-width: calc(800px + var(--sidebar-width));
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            max-width: 650px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+            position: relative;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        h2:after {
+            content: "";
+            position: absolute;
+            width: 2rem;
+            height: 2px;
+            bottom: -8px;
+            left: 0;
+            background-color: var(--accent-color);
+        }
+
+        .subsection {
+            margin-top: calc(var(--spacing-unit) * 2);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing-unit) * 0.75);
+            font-weight: 400;
+            letter-spacing: 0.1px;
+        }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Softer list styles for experiences */
+        .entry-list {
+            list-style: none;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .entry-list li {
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            position: relative;
+        }
+
+        .entry-list h3 {
+            font-size: 0.95rem;
+            margin-bottom: calc(var(--spacing-unit) * 0.25);
+            font-weight: 400;
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            font-style: italic;
+        }
+
+        /* Simple bullet list */
+        .simple-list {
+            list-style: none;
+            margin-left: var(--spacing-unit);
+        }
+
+        .simple-list li {
+            margin-bottom: calc(var(--spacing-unit) * 1);
+            position: relative;
+            padding-left: calc(var(--spacing-unit) * 0.75);
+        }
+
+        .simple-list li:before {
+            content: "~";
+            position: absolute;
+            left: -10px;
+            color: var(--accent-color);
+        }
+
+        /* Research styles */
+        .paper-list {
+            list-style: none;
+        }
+
+        .paper-list li {
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        .paper-title {
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing-unit) * 0.25);
+            font-size: 0.95rem;
+        }
+
+        .paper-authors {
+            font-style: italic;
+            margin-bottom: calc(var(--spacing-unit) * 0.25);
+            font-size: 0.85rem;
+        }
+
+        .paper-venue {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        /* Photos styles */
+
+
+        /* Footer styles */
+        footer {
+            margin-top: calc(var(--spacing-unit) * 4);
+            padding-top: calc(var(--spacing-unit) * 2);
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        /* Page transitions */
+        .page {
+            opacity: 0;
+            transform: translateY(5px);
+            animation: fadeIn 0.4s forwards;
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Collapsible sections */
+        .collapsible-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s;
+        }
+
+        .collapsible-header:hover {
+            opacity: 0.8;
+        }
+
+        .collapsible-header:after {
+            content: "+";
+            margin-left: 0.5rem;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .collapsible-header.active:after {
+            content: "–";
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapsible-content.active {
+            max-height: 1000px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                padding: var(--spacing-unit);
+                border-bottom: 1px solid rgba(0,0,0,0.04);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: calc(var(--spacing-unit) * 2);
+            }
+            
+            .profile-container {
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: var(--spacing-unit);
+            }
+            
+            .profile-pic {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 0;
+                margin-right: var(--spacing-unit);
+            }
+            
+            .name-container {
+                flex: 1;
+            }
+            
+            .tagline {
+                display: none; /* Hide tagline on mobile */
+            }
+            
+            .footer-text {
+                display: none; /* Hide footer text on mobile */
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                margin-left: auto;
+            }
+            
+            .nav-section {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .social-links {
+                margin-top: var(--spacing-unit);
+            }
+        }
+
+        .footer-text {
+            margin-top: var(--spacing-unit);
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+            opacity: 0.75;
+        }
+
+        /* Content hyperlink styling */
+        .page a:not(.nav-link):not(.subnav-link) {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .page a:not(.nav-link):not(.subnav-link):hover {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* Special styling for paper links in research section */
+        .paper-venue a {
+            color: var(--secondary-color) !important;
+            font-weight: normal !important;
+            text-decoration: underline !important;
+            text-decoration-color: rgba(0,0,0,0.2) !important;
+            text-underline-offset: 2px !important;
+        }
+
+        .paper-venue a:hover {
+            color: var(--accent-color) !important;
+            text-decoration-color: var(--accent-color) !important;
+        }
+    </style>
 </head>
 <body>
-
-	<div class="watermark">LK</div>
-
-    <div id="wrapper">
-        <section id="main" class="wrapper">
-            <div class="inner">
-                <h1 class="major">Coming Soon</h1>
-                <p>With some new life updates!</p>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-container">
+                <a href="#currently">
+                    <img src="profile.jpg" alt="Lyna Kim" class="profile-pic">
+                </a>
+                <div class="name"><a href="#currently">Lyna Kim</a></div>
+                <div class="tagline">searching for obsession</div>
             </div>
-        </section>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="#currently" class="nav-link active">currently</a></li>
+                    <li class="nav-item"><a href="#previously" class="nav-link">previously</a></li>
+                    <li class="nav-item">
+                        <a href="#things-i-do" class="nav-link has-subnav">things i do</a>
+                        <ul class="subnav">
+                            <li class="subnav-item"><a href="#research" class="subnav-link">research</a></li>
+                            <li class="subnav-item"><a href="#social-dance" class="subnav-link">social dance</a></li>
+                            <li class="subnav-item"><a href="#other-labors" class="subnav-link">other labors of love</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#care" class="nav-link">things i care about</a></li>
+                    <li class="nav-item"><a href="https://acircularlife.substack.com/" class="nav-link" target="_blank">musings</a></li>
+                </ul>
+            </nav>
+            
+            <div class="social-links">
+                <a href="https://x.com/hlynakim" target="_blank">twitter</a>
+                <a href="https://github.com/lynakim" target="_blank">github</a>
+                <a href="mailto:hlyna.kim@gmail.com">contact</a>
+            </div>
+            
+            <p class="footer-text">© 2024 Lyna Kim</p>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Currently page -->
+            <section id="currently" class="page active">
+                <h2>Hi! I'm Lyna :)</h2>
+                <p>I'm building ways to distribute wicked fast, terrifyingly accurate AI-based weather forecasts at <a href="https://windbornesystems.com" target="_blank">WindBorne Systems</a>. In past lives, I've been an acquired founder, an <a href="#research">AI researcher</a>, and climate policy writer.</p>
+                <p>I'm looking for my next obsession in the realm of building useful AI for humans, <a href="https://calendly.com/lyna_kim/15min" target="_blank">find a time</a> or <a href="mailto:hlyna.kim@gmail.com">contact me</a> if you have cool ideas!</p>
+                
+                <div class="subsection">
+                    <h3 class="collapsible-header">current thoughts</h3>
+                    <div class="collapsible-content">
+                        <p><em>coming soon!</em></p>
+                        <!-- <p>lately i've been thinking about the intersection of [topic 1] and [topic 2]. 
+                        how might we leverage [approach] to create more [outcome]? i'm curious about [question] and would love to 
+                        connect with others exploring this space.</p>
+                        
+                        <p>i'm also wondering if the way we [common practice] is actually the best approach. what if we tried [alternative]?</p> -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Previously page -->
+            <section id="previously" class="page">
+                <h2>previously</h2>
+                <p><em>coming soon!</em></p>
+                <!-- <ul class="entry-list">
+                    <li>
+                        <div class="entry-date">2021 - 2023</div>
+                        <h3>co-founder at previousstartup</h3>
+                        <p>led product development and growth, scaling to [metric] before [outcome]. learned a ton about [industry] and how to build teams that care deeply about the problem they're solving.</p>
+                    </li>
+                    <li>
+                        <div class="entry-date">2018 - 2021</div>
+                        <h3>senior product at bigtech</h3>
+                        <p>owned the [product] roadmap, growing the user base from [x] to [y] and launching [feature] that increased revenue by [z]%. worked with incredible people who taught me how to think at scale.</p>
+                    </li>
+                    <li>
+                        <div class="entry-date">2014 - 2018</div>
+                        <h3>cs & economics at university</h3>
+                        <p>researched [topic] under professor [name]. founded the [club/project] and led a team of [number] students. spent a lot of time wondering what to do with my life—still doing that, actually.</p>
+                    </li>
+                </ul> -->
+            </section>
+
+            <!-- Things I Do page -->
+            <section id="things-i-do" class="page">
+                <h2>things i do</h2>
+                <p>here are some of the different ways i spend my time and energy:</p>
+                
+                <ul class="simple-list">
+                    <li><a href="#research">research</a>: exploring the intersection of AI, science, and human systems</li>
+                    <li><a href="#social-dance">social dance</a>: finding joy and community through movement</li>
+                    <li><a href="#other-labors">other labors of love</a>: the miscellaneous projects that bring me fulfillment</li>
+                </ul>
+            </section>
+            
+            <!-- Research page -->
+            <section id="research" class="page">
+                <h2>research</h2>
+                <p>my research interests are ai for science, particularly foundation models for the earth, and more broadly understanding or benefitting real humans through their interactions with complex systems. that means i've explored an odd set of corners like the time dependency of carbon credits, physics-based interpretability of ai for the earth, and what we can learn of the inner workings of human brains from neural representations of LLMs.</p>
+
+                <p><em>previous publications coming soon!</em></p>
+<!--                 
+                <div class="research-subsection">
+                    <h3>conference papers</h3>
+                    <ul class="paper-list">
+                        <li>
+                            <div class="paper-title">paper title 1</div>
+                            <div class="paper-authors"><strong>your name</strong>, coauthor 1, coauthor 2</div>
+                            <div class="paper-venue">
+                                conference or journal name (year) 
+                                [<a href="#" target="_blank">proc</a>] 
+                                [<a href="#" target="_blank">paper</a>]
+                            </div>
+                            <p>brief description of what we did and why it matters. the part i'm most proud of is [x].</p>
+                        </li>
+                        <li>
+                            <div class="paper-title">paper title 2</div>
+                            <div class="paper-authors">coauthor 1, <strong>your name</strong>, coauthor 2</div>
+                            <div class="paper-venue">
+                                conference or journal name (year) 
+                                [<a href="#" target="_blank">proc</a>] 
+                                [<a href="#" target="_blank">paper</a>]
+                            </div>
+                            <p>brief description of what we did and why it matters. this one was challenging because [y], but we eventually figured it out.</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="research-subsection">
+                    <h3>other publications</h3>
+                    <ul class="paper-list">
+                        <li>
+                            <div class="paper-title">preprint title 1</div>
+                            <div class="paper-authors"><strong>your name</strong>, coauthor 1</div>
+                            <div class="paper-venue">
+                                arxiv:xxxx.xxxxx (year) 
+                                [<a href="#" target="_blank">proc</a>] 
+                                [<a href="#" target="_blank">paper</a>]
+                            </div>
+                            <p>brief description of the work. still in progress, but i'm excited about where it's going.</p>
+                        </li>
+                    </ul>
+                </div> -->
+            </section>
+            
+            <!-- Social Dance page -->
+            <section id="social-dance" class="page">
+                <h2>social dance</h2>
+                <p><em>coming soon!</em></p>
+                <!-- <p>i've been dancing socially for several years now, focusing primarily on [dance styles]. it's become an important part of my life and community.</p>
+                
+                <ul class="simple-list">
+                    <li>currently teaching [dance style] at [location/studio] on [days]</li>
+                    <li>performed with [dance group/team] at [events]</li>
+                    <li>organizing [dance events/socials] in the [city/area] community</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;">if you're interested in learning or already dance, reach out at <a href="mailto:your.email@example.com">your.email@example.com</a> — always looking to connect with fellow dancers!</p> -->
+            </section>
+            
+            <!-- Other Labors page -->
+            <section id="other-labors" class="page">
+                <h2>other labors of love</h2>
+                <p><em>coming soon!</em></p>
+                <!-- <ul class="entry-list">
+                    <li>
+                        <div class="entry-date">ongoing</div>
+                        <h3>project/hobby name</h3>
+                        <p>description of this passion project or hobby and why it matters to you.</p>
+                    </li>
+                    <li>
+                        <div class="entry-date">seasonal</div>
+                        <h3>another interest</h3>
+                        <p>details about another interest or activity you pursue outside of your main work.</p>
+                    </li>
+                </ul> -->
+            </section>
+
+            <!-- Things I Care About page -->
+            <section id="care" class="page">
+                <h2>things i care about</h2>
+                <p><em>coming soon!</em></p>
+                <!-- <p>these are the principles and causes that guide my work and life. they're evolving, as am i:</p>
+                
+                <ul class="simple-list">
+                    <li>climate action: i believe technology can and must play a crucial role in addressing the climate crisis. this drives my work in [specific area].</li>
+                    <li>intellectual honesty: i'm committed to following evidence, changing my mind when needed, and being transparent about what i know and don't know.</li>
+                    <li>long-termism: i'm focused on efforts that may not pay off immediately but create lasting positive impact for future generations.</li>
+                    <li>effective altruism: i strive to maximize the positive impact of my resources through careful consideration of how to do the most good.</li>
+                    <li>community building: i believe in the power of bringing together diverse groups of people around shared missions.</li>
+                </ul> -->
+            </section>
+        </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            const subnavLinks = document.querySelectorAll('.subnav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            // Handle collapsible sections
+            const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+            collapsibleHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    const content = header.nextElementSibling;
+                    if (content.classList.contains('active')) {
+                        content.classList.remove('active');
+                    } else {
+                        content.classList.add('active');
+                    }
+                });
+            });
+            
+            // Initialize - check if URL has hash
+            function initPage() {
+                const hash = window.location.hash;
+                if (hash) {
+                    const pageId = hash.substring(1);
+                    // Check if the page with this ID exists
+                    if (document.getElementById(pageId)) {
+                        showPage(pageId);
+                    } else {
+                        // If page doesn't exist, go to default
+                        showPage('currently');
+                        history.replaceState(null, null, '#currently');
+                    }
+                } else {
+                    showPage('currently');
+                }
+            }
+            
+            // Show a page and hide others
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                
+                // Update active state on navigation
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                subnavLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Find the direct link to this page
+                const directLink = document.querySelector(`.nav-link[href="#${pageId}"], .subnav-link[href="#${pageId}"]`);
+                
+                if (directLink) {
+                    directLink.classList.add('active');
+                    
+                    // If it's a subnav link, also highlight its parent
+                    if (directLink.classList.contains('subnav-link')) {
+                        const parentNav = directLink.closest('.subnav').previousElementSibling;
+                        if (parentNav) {
+                            parentNav.classList.add('active');
+                            
+                            // Expand the subnav
+                            if (parentNav.classList.contains('has-subnav')) {
+                                parentNav.classList.add('expanded');
+                            }
+                        }
+                    }
+                } else {
+                    // If no direct link found, this might be a subsection of "things i do"
+                    // Check if it's one of the subsections
+                    const thingsIDoSubsections = ['research', 'social-dance', 'other-labors'];
+                    if (thingsIDoSubsections.includes(pageId)) {
+                        // Highlight the "things i do" nav link
+                        const thingsIDoLink = document.querySelector('.nav-link[href="#things-i-do"]');
+                        if (thingsIDoLink) {
+                            thingsIDoLink.classList.add('active');
+                            
+                            // Expand the subnav if it has one
+                            if (thingsIDoLink.classList.contains('has-subnav')) {
+                                thingsIDoLink.classList.add('expanded');
+                            }
+                            
+                            // Also highlight the specific subsection link
+                            const subsectionLink = document.querySelector(`.subnav-link[href="#${pageId}"]`);
+                            if (subsectionLink) {
+                                subsectionLink.classList.add('active');
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                if (!link.hasAttribute('target')) { // Skip external links
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Get the page ID from href
+                        const href = link.getAttribute('href');
+                        if (href.startsWith('#')) {
+                            const pageId = href.substring(1);
+                            
+                            // Toggle subnavs if this is a subnav parent
+                            if (link.classList.contains('has-subnav')) {
+                                link.classList.toggle('expanded');
+                                
+                                // If it's not expanded now, still navigate to the page
+                                if (!link.classList.contains('expanded')) {
+                                    showPage(pageId);
+                                    history.pushState(null, null, href);
+                                }
+                            } else {
+                                // For regular links, show the page
+                                showPage(pageId);
+                                history.pushState(null, null, href);
+                            }
+                        }
+                    });
+                }
+            });
+            
+            // Handle subnav links
+            subnavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('href').substring(1);
+                    showPage(pageId);
+                    history.pushState(null, null, link.getAttribute('href'));
+                });
+            });
+            
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', () => {
+                initPage();
+            });
+            
+            // Initialize the page
+            initPage();
+        });
+    </script>
 </body>
 </html>
