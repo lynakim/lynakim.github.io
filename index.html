@@ -341,7 +341,7 @@
         .paper-title {
             font-weight: 400;
             margin-bottom: calc(var(--spacing-unit) * 0.25);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .paper-authors {
@@ -353,6 +353,7 @@
         .paper-venue {
             font-size: 0.85rem;
             color: var(--secondary-color);
+            font-weight: 400;
         }
 
         /* Photos styles */
@@ -616,51 +617,93 @@
             <!-- Research page -->
             <section id="research" class="page">
                 <h2>research</h2>
-                <p>my research interests are ai for science, particularly foundation models for the earth, and more broadly understanding or benefitting real humans through their interactions with complex systems. that means i've explored an odd set of corners like the time dependency of carbon credits, physics-based interpretability of ai for the earth, and what we can learn of the inner workings of human brains from neural representations of LLMs.</p>
+                <p>at the highest level, i'm excited to better understand or benefit humans through their interactions with complex systems—like the environment, or markets, or LLMs.</p>
+                <p>more specifically, i'm excited about ai for science, particularly foundation models for the earth. that said, my broader research interests have led me to explore a pretty odd set of corners, like: the time dependency of carbon credits, physics-based interpretability of ai for numerical weather prediction, and what we can learn of the inner workings of human brains from neural representations of LLMs.</p>
 
-                <p><em>previous publications coming soon!</em></p>
-<!--                 
+                
                 <div class="research-subsection">
-                    <h3>conference papers</h3>
+                    <h3>conferences</h3>
+                    <p><em>* denotes equal contribution</em></p>
                     <ul class="paper-list">
                         <li>
-                            <div class="paper-title">paper title 1</div>
-                            <div class="paper-authors"><strong>your name</strong>, coauthor 1, coauthor 2</div>
+                            <div class="paper-title">WeatherMesh-3: Fast and Accurate Operational Global Weather Forecasting</div>
+                            <div class="paper-authors">Haoxing Du*, <strong>Lyna Kim*</strong>, Joan Creus-Costa, Jack Michaels, Anuj Shetty, Todd Hutchinson, Christopher Riedel, and John Dean</div>
                             <div class="paper-venue">
-                                conference or journal name (year) 
-                                [<a href="#" target="_blank">proc</a>] 
-                                [<a href="#" target="_blank">paper</a>]
+                                TBD
+                                <!-- ICLR 2025 Workshop: Tackling Climate Change with AI -->
+                                <!-- [<a href="#" target="_blank">preprint</a>]  -->
                             </div>
-                            <p>brief description of what we did and why it matters. the part i'm most proud of is [x].</p>
                         </li>
                         <li>
-                            <div class="paper-title">paper title 2</div>
-                            <div class="paper-authors">coauthor 1, <strong>your name</strong>, coauthor 2</div>
+                            <div class="paper-title">Extreme Weather Bench</div>
+                            <div class="paper-authors">Amy McGovern, Daniel Rothenberg, Nicholas Loveday, Corey Potvin, Eric Gilleland, and <strong>Lyna Kim</strong></div>
                             <div class="paper-venue">
-                                conference or journal name (year) 
-                                [<a href="#" target="_blank">proc</a>] 
-                                [<a href="#" target="_blank">paper</a>]
+                                AMS 2025 Oral Presentation
+                                [<a href="https://ams.confex.com/ams/105ANNUAL/meetingapp.cgi/Paper/451220" target="_blank">proc</a>] 
                             </div>
-                            <p>brief description of what we did and why it matters. this one was challenging because [y], but we eventually figured it out.</p>
+                        </li>
+                        <li>
+                            <div class="paper-title">Towards Physically Interpretable and Consistent AI-Driven Numerical Weather Forecasts</div>
+                            <div class="paper-authors"><strong>Lyna Kim</strong>, Makoto Kelp, Emily Gordon, Renzhi Jing, Jeremy Irvin</div>
+                            <div class="paper-venue">
+                                AGU 2024
+                                [<a href="https://agu.confex.com/agu/agu24/meetingapp.cgi/Paper/1550166" target="_blank">proc</a>] 
+                                [<a href="https://docs.google.com/presentation/d/1-aavt_6aJg9p7_NZTPkz9iQSbJ6a_8z1HOMFiRFq3NE/edit?usp=sharing" target="_blank">poster</a>]
+                            </div>
+                        </li>
+                        <li>
+                            <div class="paper-title">CloudTracks: A Dataset for Localizing Ship Tracks in Satellite Images of Clouds</div>
+                            <div class="paper-authors">Muhammad Ahmed Chaudhry*, <strong>Lyna Kim*</strong>, Jeremy Irvin*, Yuzu Ido, Sonia chu, Jared Isobe, Andrew Ng, Duncan Watson-Parris</div>
+                            <div class="paper-venue">
+                                AGU 2024 Oral Presentation
+                                [<a href="https://agu.confex.com/agu/agu24/meetingapp.cgi/Paper/1662199" target="_blank">proc</a>] 
+                            </div>
+                        </li>
+                        <li>
+                            <div class="paper-title">Enhancing Numerical Weather Prediction with Artificial Intelligence: Activities of the NOAA AI for Numerical Weather Prediction (AI4NWP) Team</div>
+                            <div class="paper-authors">John Ten Hoeve, Adam Clark, Sergey Frolov, Kevin Garrett, Maoyi Huang, Isidora Jankov, <strong>Lyna Kim</strong>, Daryl Kleist, Corey Potvin, Jebb Stewart, and Monica Youngman</div>
+                            <div class="paper-venue">
+                                AGU 2024 Oral Presentation
+                                [<a href="https://agu.confex.com/agu/agu24/meetingapp.cgi/Paper/1712204" target="_blank">proc</a>] 
+                            </div>
+                        </li>
+                        <li>
+                            <div class="paper-title">Navigating Data-Centric AI Challenges in Earth and Space Sciences: Focus on Climate and Remote Sensing</div>
+                            <div class="paper-authors">Duncan Watson-Parris, Muhammad Ahmed Chaudhry, <strong>Lyna Kim</strong>, Jeremy Irvin, Yuzu Ido, Sonia Chu, Jared Isobe, Srikar Eranky, Bohan Zhao, Veeramakali Manivannan, Spencer Ho, Leon Bergen, Taylor Berg-Kirkpatrick, Yian Ma, Andrew Ng, and Rose Yu</div>
+                            <div class="paper-venue">
+                                AGU 2024 Invited Presentation
+                                [<a href="https://agu.confex.com/agu/agu24/meetingapp.cgi/Paper/1548765" target="_blank">proc</a>] 
+                            </div>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="research-subsection">
-                    <h3>other publications</h3>
+                    <h3>other work</h3>
                     <ul class="paper-list">
                         <li>
-                            <div class="paper-title">preprint title 1</div>
-                            <div class="paper-authors"><strong>your name</strong>, coauthor 1</div>
+                            <div class="paper-title">Nature in the balance: What companies can do to restore natural capital</div>
+                            <div class="paper-authors">Daniel Aminetzah, Julien Claes, Caroline De Vit, Ivo Erben, Duko Hopman, Kartik Jayaram, Joshua Katz, Tomas Nauclér, Hamid Samandari, Tucker Van Aken, Dee Yang, contributions by <strong>Lyna Kim</strong></div>
                             <div class="paper-venue">
-                                arxiv:xxxx.xxxxx (year) 
-                                [<a href="#" target="_blank">proc</a>] 
-                                [<a href="#" target="_blank">paper</a>]
-                            </div>
-                            <p>brief description of the work. still in progress, but i'm excited about where it's going.</p>
+                                McKinsey & Company 2022
+                                [<a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/sustainability/our%20insights/nature%20in%20the%20balance%20what%20companies%20can%20do%20to%20restore%20natural%20capital/nature-in-the-balance-what-companies-can-do-to-restore-natural-capital-vf.pdf" target="_blank">link</a>] 
                         </li>
+                        <li>
+                            <div class="paper-title">Settling Climate Accounts: Navigating the Road to Net Zero</div>
+                            <div class="paper-authors">Thomas Heller and Alicia Seiger, contributions by <strong>Lyna Kim</strong></div>
+                            <div class="paper-venue">
+                                Springer Nature 2021 
+                                [<a href="https://link.springer.com/book/10.1007/978-3-030-83650-4" target="_blank">link</a>] 
+                        </li>
+                    </ul> 
+                </div>
+                <div class="research-subsection">
+                    <h3>other work</h3>
+                    <ul class="simple-list" style="margin-bottom: calc(var(--spacing-unit) * 0.3);">
+                        <li style="margin-bottom: calc(var(--spacing-unit) * 0.3);"><span style="font-size: 0.85rem;">Reviewer for Geophysical Research Letters, 2024-2025</span></li>
+                        <li style="margin-bottom: calc(var(--spacing-unit) * 0.3);"><span style="font-size: 0.85rem;">TA for MS&E 243, 2022</span></li>
                     </ul>
-                </div> -->
+                </div>
             </section>
             
             <!-- Social Dance page -->
