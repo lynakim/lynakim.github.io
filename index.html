@@ -324,7 +324,7 @@
         }
 
         .simple-list li:before {
-            content: "~";
+            content: "•";
             position: absolute;
             left: -10px;
             color: var(--accent-color);
@@ -564,18 +564,25 @@
             <!-- Currently page -->
             <section id="currently" class="page active">
                 <h2>Hi! I'm Lyna :)</h2>
-                <p>I'm building ways to distribute wicked fast, terrifyingly accurate AI-based weather forecasts at <a href="https://windbornesystems.com" target="_blank">WindBorne Systems</a>. In <a href="https://youtu.be/g2UiiZhXQiY?si=jrvMPxRe-7wYVVyz&t=280" target="_blank">past lives</a>, I've been an <a href="https://www.lightbulbml.com/" target="_blank">acquired founder</a>, an <a href="#research">AI researcher</a>, and climate policy advocate.</p>
+                <p>I'm building ways to distribute wicked fast, terrifyingly accurate AI-based weather forecasts at <a href="https://windbornesystems.com" target="_blank">WindBorne Systems</a>. In <a href="https://youtu.be/g2UiiZhXQiY?si=jrvMPxRe-7wYVVyz&t=280" target="_blank">past lives</a>, I've been an <a href="https://www.lightbulbml.com/" target="_blank">acquired founder</a>, an <a href="#research">AI researcher</a>, and climate policy fellow at NOAA.</p>
                 <p>I'm looking for my next obsession in the realm of building useful AI for humans. <a href="https://calendly.com/lyna_kim/15min" target="_blank">Grab a time</a> or <a href="mailto:hlyna.kim@gmail.com">contact me</a> if you have cool ideas!</p>
+                <p><em>note from 2025.03.10 — I'm heading to Singapore in April for ICLR 2025. Reach out if you'll be there, coffee's on me!</em></p>
                 
                 <div class="subsection">
                     <h3 class="collapsible-header">current thoughts</h3>
                     <div class="collapsible-content">
-                        <p><em>coming soon!</em></p>
-                        <!-- <p>lately i've been thinking about the intersection of [topic 1] and [topic 2]. 
-                        how might we leverage [approach] to create more [outcome]? i'm curious about [question] and would love to 
-                        connect with others exploring this space.</p>
-                        
-                        <p>i'm also wondering if the way we [common practice] is actually the best approach. what if we tried [alternative]?</p> -->
+                        <p><em>a casual dump of thoughts/questions in my head, usally no more than a few months stale</em></p>
+                        <ul class="simple-list">
+                            <li>
+                                <p>what learnings can we discover & operationalize about ai weather model trustworthiness from the scenarios under which forecasts are unphysical?</p>
+                            </li>
+                            <li>
+                                <p>what do llms teach us about the human cognitive experience? are llms using the same neural representations of the world? what do the ovverlaps/differences tell us about what it means to "learn" or "think" or "feel"?</p>
+                            </li>
+                            <li>
+                                <p>how can i sustainably create tangible artistic artifacts of my emotional experiences?</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -583,7 +590,10 @@
             <!-- Previously page -->
             <section id="previously" class="page">
                 <h2>previously</h2>
+                <p><em>not a resume, instead a story in bullet points of interesting past chapters</em></p>
+
                 <p><em>coming soon!</em></p>
+
                 <!-- <ul class="entry-list">
                     <li>
                         <div class="entry-date">2021 - 2023</div>
@@ -601,17 +611,28 @@
                         <p>researched [topic] under professor [name]. founded the [club/project] and led a team of [number] students. spent a lot of time wondering what to do with my life—still doing that, actually.</p>
                     </li>
                 </ul> -->
+                <div class="subsection">
+                    <h3 class="collapsible-header">archive of previous thoughts</h3>
+                    <div class="collapsible-content">
+                        <!-- <p><em>coming soon!</em></p> -->
+                        <ul class="simple-list">
+                            <li>
+                                <p>2024.03 — do ai x weather models learn physics? how is this correlated with model performance, particularly in relation to physics-based numerical weather prediction systems?</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- Things I Do page -->
             <section id="things-i-do" class="page">
                 <h2>things i do</h2>
-                <p>here are some of the different ways i spend my time and energy:</p>
+                <p><em>different ways i find meaning</em></p>
                 
                 <ul class="simple-list">
-                    <li><a href="#research">research</a>: exploring the intersection of AI, science, and human systems</li>
-                    <li><a href="#social-dance">social dance</a>: finding joy and community through movement</li>
-                    <li><a href="#other-labors">other labors of love</a>: the miscellaneous projects that bring me fulfillment</li>
+                    <li><a href="#research">research</a>: exploring the intersection of AI, humans, and complex systems</li>
+                    <li><a href="#social-dance">social dance</a>: learning a new language for expression and connection</li>
+                    <li><a href="#other-labors">other labors of love</a>: building miscellaneous projects that obsess me</li>
                 </ul>
             </section>
             
@@ -619,7 +640,7 @@
             <section id="research" class="page">
                 <h2>research</h2>
                 <p>at the highest level, i'm excited to better understand or benefit humans through their interactions with complex systems—like the environment, or markets, or LLMs.</p>
-                <p>more specifically, i'm excited about ai for science, particularly foundation models for the earth. that said, my broader research interests have led me to explore a pretty odd set of corners, like: the time dependency of carbon credits, physics-based interpretability of ai for numerical weather prediction, and what we can learn of the inner workings of human brains from neural representations of LLMs.</p>
+                <p>more specifically, i'm excited about ai for science, particularly foundation models for the earth. that said, my broader research interests have led me to explore a pretty odd set of corners, like: the time dependency of carbon credits, physics-based interpretability of ai for numerical weather prediction, and what we can learn of the inner workings of human brains from LLMs.</p>
 
                 
                 <div class="research-subsection">
@@ -629,7 +650,7 @@
                             <div class="paper-title">WeatherMesh-3: Fast and Accurate Operational Global Weather Forecasting</div>
                             <div class="paper-authors">Haoxing Du*, <strong>Lyna Kim*</strong>, Joan Creus-Costa, Jack Michaels, Anuj Shetty, Todd Hutchinson, Christopher Riedel, and John Dean</div>
                             <div class="paper-venue">
-                                ICLR 2025 Workshop: Tackling Climate Change with AI — Spotlight Presentation
+                                ICLR 2025 Spotlight Presentation in <em>Tackling Climate Change with AI</em>
                             </div>
                         </li>
                         <li>
